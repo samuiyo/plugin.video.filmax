@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+	<string id="30001">En cartelera</string>
+	<string id="30002">Próximos estrenos</string>
+	<string id="30003">Proyecciones</string>
+	<string id="30004">Sinopsis</string>
+	<string id="30005">Buscar Película</string>
+	<string id="30006">Buscar Director</string>
+	<string id="30007">Buscar Reparto</string>
+	<string id="30008">sin resultados</string>
+	<string id="30009">Información</string>
+	
+	<string id="31001">Seleccione de los menús, el cine Filmax de su ciudad, del cual desea ver la cartelera.</string>
+	<string id="31002">Provincia:</string>
+	<string id="31003">Cine:</string>
+</strings>

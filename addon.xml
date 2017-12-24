@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.filmax" name="Filmax" version="1.0.2" provider-name="samui darwin">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0"/>
+		<import addon="plugin.video.youtube" version="3.0.0"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="default.py">
+		<provides>video</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="ca">[B]Cartellera Cinemes Filmax</summary>
+		<description lang="ca">[CR]Veure tota la cartellera de cinemes Filmax a Català.[CR]Seleccioneu del menú, el cinema Filmax de la seva ciutat, del qual desitja veure la cartellera. Disposa de més de 300 cinemes Filmax de tota Espanya per seleccionar.[CR]També disposa de próximes estrenes i recerca per categories; pel·lícula, director, intèrpret.</description>
+		<summary lang="en">[B]Billboards Filmax Cinemas</summary>
+		<description lang="en">[CR]Watch all Filmax cinemas showtimes in Spanish.[CR]Select from the menu, the Filmax cinema of your city, from which you wish to see the billboard. It has more than 300 Filmax cinemas throughout Spain to select.[CR]It also dispose the next premiers and search by categories; movie, director, cast.</description>
+		<summary lang="es">[B]Cartelera Cines Filmax</summary>
+		<description lang="es">[CR]Ver toda la cartelera de cines Filmax en Español.[CR]Seleccione del menú, el cine Filmax de su ciudad, del cual desea ver la cartelera. Dispone de mas de 300 cines Filmax de toda España para seleccionar.[CR]También dispone de próximos estrenos y busqueda por categorías; película, director, reparto.</description>
+		<disclaimer></disclaimer>
+		<news>1.0.2 (2017-12-16)[CR] - Added a start page with 5 optional searchs and new icons pack.</news>
+		<news>1.0.1 (2017-11-19)[CR] - Added 312 theathers to select on settings.</news>
+		<news>1.0.0 (2017-11-06)[CR] - Initial release.</news>
+		<platform>all</platform>
+		<language>ca en es</language>
+		<license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+		<forum></forum>
+		<website>http://www.publicine.net</website>
+		<source>https://github.com/samuiyo/plugin.video.filmax</source>
+		<email></email>
+		<assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.jpg</fanart>
+			<screenshot>resources/screenshot01.jpg</screenshot>
+			<screenshot>resources/screenshot02.jpg</screenshot>
+			<screenshot>resources/screenshot03.jpg</screenshot>
+			<screenshot>resources/screenshot04.jpg</screenshot>
+		</assets>
+	</extension>
+</addon>

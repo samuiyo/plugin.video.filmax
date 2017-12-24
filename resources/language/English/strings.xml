@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+	<string id="30001">On showtimes</string>
+	<string id="30002">Next premiers</string>
+	<string id="30003">Showtimes</string>
+	<string id="30004">Synopsis</string>
+	<string id="30005">Search Movie</string>
+	<string id="30006">Search Director</string>
+	<string id="30007">Search Cast</string>
+	<string id="30008">without results</string>
+	<string id="30009">Information</string>
+	
+	<string id="31001">Select from the menus, the Filmax cinema of your city, from which you wish to see the billboard.</string>
+	<string id="31002">Province:</string>
+	<string id="31003">Cinema:</string>
+</strings>
