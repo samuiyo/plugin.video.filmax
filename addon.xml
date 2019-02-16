@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.filmax" name="Filmax" version="1.0.2" provider-name="samui darwin">
+<addon id="plugin.video.filmax" name="Filmax" version="1.0.3" provider-name="samui darwin">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0"/>
 		<import addon="plugin.video.youtube" version="3.0.0"/>
@@ -15,9 +15,10 @@
 		<summary lang="es">[B]Cartelera Cines Filmax</summary>
 		<description lang="es">[CR]Ver toda la cartelera de cines Filmax en Español.[CR]Seleccione del menú, el cine Filmax de su ciudad, del cual desea ver la cartelera. Dispone de mas de 300 cines Filmax de toda España para seleccionar.[CR]También dispone de próximos estrenos y busqueda por categorías; película, director, reparto.</description>
 		<disclaimer></disclaimer>
-		<news>1.0.2 (2017-12-16)[CR] - Added a start page with 5 optional searchs and new icons pack.</news>
-		<news>1.0.1 (2017-11-19)[CR] - Added 312 theathers to select on settings.</news>
-		<news>1.0.0 (2017-11-06)[CR] - Initial release.</news>
+		<news lang="en">1.0.3 (2018-01-22)[CR] - Minor changes on settings menus and web scraping.</news>
+		<news lang="en">1.0.2 (2017-12-16)[CR] - Added a start page with 5 optional searches and new icons pack.</news>
+		<news lang="en">1.0.1 (2017-11-19)[CR] - Added 312 theaters to select on settings.</news>
+		<news lang="en">1.0.0 (2017-11-06)[CR] - Initial release.</news>
 		<platform>all</platform>
 		<language>ca en es</language>
 		<license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>

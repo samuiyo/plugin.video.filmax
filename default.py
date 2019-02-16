@@ -36,7 +36,7 @@ T_INFO_MEN=30009
 
 APP_NAME = addonID.getAddonInfo('name')
 SEL_CINE = addonID.getSetting('SEL_CINE')
-if SEL_CINE == "":
+if SEL_CINE == " ":
 	addonID.openSettings()
 	SEL_CINE = addonID.getSetting('SEL_CINE')
 
@@ -128,7 +128,7 @@ def get_showtime_list(url):
 		genere = f[3]
 		seconds = int(re.sub('[^0-9]', '', f[4]))*60
 		proyects = re.sub(r"<td><span class='[^']*'>", r'\n', f[5])
-		proyects = re.sub(r"([0-9][0-9])/([0-9][0-9])</span><[^>]*>", r'\1/\2\n·', proyects)
+		proyects = re.sub(r"(.*)([0-9][0-9])/([0-9][0-9])</span><[^>]*>", r'[COLOR lightskyblue]\1\2/\3[/COLOR]\n·', proyects)
 		proyects = re.sub(r'<[^>]*>', r' ', proyects)
 		proyects = proyects.replace('.',':').replace(': ','. ').replace('  ',' ')#.replace('  ',' ')
 		

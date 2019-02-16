@@ -2,15 +2,16 @@
 <strings>
 	<string id="30001">En cartellera</string>
 	<string id="30002">Próximes estrenes</string>
-	<string id="30003">Projeccions</string>
-	<string id="30004">Sinopsi</string>
+	<string id="30003">[B]Projeccions[/B]</string>
+	<string id="30004">[B]Sinopsi[/B]</string>
 	<string id="30005">Cercar Pel·lícula</string>
 	<string id="30006">Cercar Director</string>
 	<string id="30007">Cercar Intèrpret</string>
 	<string id="30008">sense resultats</string>
 	<string id="30009">Informació</string>
 	
-	<string id="31001">Seleccioneu dels menús, el cinema Filmax de la seva ciutat, del qual desitja veure la cartellera.</string>
-	<string id="31002">Provícia:</string>
-	<string id="31003">Cinema:</string>
+	<string id="31001">Seleccioni la seva població per filtrar les sales dels cinemas més propers.</string>
+	<string id="31002">Seleccioni el cinema Filmax de la seva ciutat del qual desitja veure la cartellera.</string>
+	<string id="31003">Provícia:</string>
+	<string id="31004">Cinema:</string>
 </strings>
