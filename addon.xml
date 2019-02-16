@@ -15,6 +15,7 @@
 		<summary lang="es">[B]Cartelera Cines Filmax</summary>
 		<description lang="es">[CR]Ver toda la cartelera de cines Filmax en Español.[CR]Seleccione del menú, el cine Filmax de su ciudad, del cual desea ver la cartelera. Dispone de mas de 300 cines Filmax de toda España para seleccionar.[CR]También dispone de próximos estrenos y busqueda por categorías; película, director, reparto.</description>
 		<disclaimer></disclaimer>
+		<news lang="en">1.0.4 (2018-12-16)[CR] - Updates and new cinemas urls for web scraping.</news>
 		<news lang="en">1.0.3 (2018-01-22)[CR] - Minor changes on settings menus and web scraping.</news>
 		<news lang="en">1.0.2 (2017-12-16)[CR] - Added a start page with 5 optional searches and new icons pack.</news>
 		<news lang="en">1.0.1 (2017-11-19)[CR] - Added 312 theaters to select on settings.</news>

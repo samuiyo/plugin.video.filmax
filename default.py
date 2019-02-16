@@ -40,7 +40,7 @@ if SEL_CINE == " ":
 	addonID.openSettings()
 	SEL_CINE = addonID.getSetting('SEL_CINE')
 
-urlbase = "http://www.publicine.net"
+urlbase = "https://www.publicine.net"
 listing = []
 
 
@@ -112,7 +112,7 @@ def get_showtime_list(url):
 	html = re.sub(r"""<div class='spacer'></div><p class="clear">.*</p>""", r'', html)
 	html = html.strip()
 	
-	query = """<div><div class='poster'.+?title="(.+?)".+?href='(.+?)'.+?src='(.+?)'>.+?</span><br/>.+?<br/>(.+?)<br/>(.+?)<br/></div>.+?<table><tr>(.+?)</tr></table>"""
+	query = """<div><div class='poster'.+?title="(.+?)".+?href='(.+?)'.+?src='(.+?)'>.+?</span>.+?<br/>(.+?)<br/>(.+?)<br/></div>.+?<table><tr>(.+?)</tr></table>"""
 	films = re.compile(query, re.DOTALL).findall(html)
 	
 	#print (html)
@@ -291,7 +291,7 @@ def get_search_list(url):
 	html = re.sub(r"<div class='spacer'></div>[^\n]*\n", r'\n', html)
 	html = html.strip()
 	
-	query = """<div><div class='poster'.+?title="(.+?)".+?href='(.+?)'.+?src='(.+?)'>.+?</span><strong>(.+?)</strong>.+?<br/><br/>(.+?)<br/></div></div>"""
+	query = """<div><div class='poster'.+?title="(.+?)".+?href='(.+?)'.+?src='(.+?)'>.+?</span><strong>(.+?)</strong><br/>.+?<br/><strong>(.+?)<br/></strong>+?</div></div>"""
 	films = re.compile(query, re.DOTALL).findall(html)
 	
 	for f in films:
@@ -315,7 +315,7 @@ def get_search_list(url):
 		
 		if not 'iframe' in html2 and not CAST_FILT_LEN in html2:
 			#opts = '[x] Trailer\n[x] Cast'
-			query2 = ".+?</span>(.+?)<br.+?</span>.+?<br.+?</span>.+?<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>(.+?)<br"
+			query2 = ".+?</span>(.+?)<br.+?</span>.+?<br.+?</span>.+?<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>.+?<br.+?</span>(.+?)<br"
 			movies = re.findall(query2, html2)
 			
 			for m in movies:
