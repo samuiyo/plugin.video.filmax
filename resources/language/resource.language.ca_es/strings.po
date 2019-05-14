@@ -1,0 +1,271 @@
+# XBMC Media Center language file
+# Addon Name: Filmax
+# Addon id: plugin.video.filmax
+# Addon Provider: samui darwin
+msgid ""
+msgstr ""
+"Project-Id-Version: XBMC Addons\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ca_ES\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "#33001"
+msgid "On showtimes"
+msgstr "En cartellera"
+
+msgctxt "#33002"
+msgid "Próximes estrenes"
+msgstr "Next premiers"
+
+msgctxt "#33003"
+msgid "[B]Showtimes[/B]"
+msgstr "[B]Projeccions[/B]"
+
+msgctxt "#33004"
+msgid "[B]Synopsis[/B]"
+msgstr "[B]Sinopsi[/B]"
+
+msgctxt "#33005"
+msgid "Search Movie"
+msgstr "Cercar Pel·lícula"
+
+msgctxt "#33006"
+msgid "Search Director"
+msgstr "Cercar Director"
+
+msgctxt "#33007"
+msgid "Search Cast"
+msgstr "Cercar Intèrpret"
+
+msgctxt "#33008"
+msgid "without results"
+msgstr "sense resultats"
+
+msgctxt "#33009"
+msgid "Information"
+msgstr "Informació"
+
+
+
+msgctxt "#33021"
+msgid "Select your Province to filter the halls of the nearest cinemas."
+msgstr "Seleccioni la seva població per filtrar les sales dels cinemas més propers."
+
+msgctxt "#33022"
+msgid "Select the Filmax cinema of your city from which you wish to see the billboard."
+msgstr "Seleccioni el cinema Filmax de la seva ciutat del qual desitja veure la cartellera."
+
+msgctxt "#33023"
+msgid "Province:"
+msgstr "Provícia:"
+
+msgctxt "#33024"
+msgid "Cinema:"
+msgstr "Cinema:"
+
+
+
+msgctxt "#33101"
+msgid "A CORUÑA"
+msgstr "A CORUÑA"
+
+msgctxt "#33102"
+msgid "ALACANT / ALICANTE"
+msgstr "ALACANT"
+
+msgctxt "#33103"
+msgid "ÁLAVA"
+msgstr "ÁLAVA"
+
+msgctxt "#33104"
+msgid "ALBACETE"
+msgstr "ALBACETE"
+
+msgctxt "#33105"
+msgid "ALMERÍA"
+msgstr "ALMERÍA"
+
+msgctxt "#33106"
+msgid "ANDORRA"
+msgstr "ANDORRA"
+
+msgctxt "#33107"
+msgid "ASTURIAS"
+msgstr "ASTURIAS"
+
+msgctxt "#33108"
+msgid "BADAJOZ"
+msgstr "BADAJOZ"
+
+msgctxt "#33109"
+msgid "BARCELONA"
+msgstr "BARCELONA"
+
+msgctxt "#33110"
+msgid "BURGOS"
+msgstr "BURGOS"
+
+msgctxt "#33111"
+msgid "CÁDIZ"
+msgstr "CÁDIZ"
+
+msgctxt "#33112"
+msgid "CANTABRIA"
+msgstr "CANTABRIA"
+
+msgctxt "#33113"
+msgid "CASTELLÓ / CASTELLÓN"
+msgstr "CASTELLÓ"
+
+msgctxt "#33114"
+msgid "CEUTA"
+msgstr "CEUTA"
+
+msgctxt "#33115"
+msgid "CIUDAD REAL"
+msgstr "CIUDAD REAL"
+
+msgctxt "#33116"
+msgid "CÓRDOBA"
+msgstr "CÓRDOBA"
+
+msgctxt "#33117"
+msgid "CUENCA"
+msgstr "CUENCA"
+
+msgctxt "#33118"
+msgid "GIPUZKOA"
+msgstr "GIPUZKOA"
+
+msgctxt "#33119"
+msgid "GIRONA"
+msgstr "GIRONA"
+
+msgctxt "#33120"
+msgid "GRANADA"
+msgstr "GRANADA"
+
+msgctxt "#33121"
+msgid "GUADALAJARA"
+msgstr "GUADALAJARA"
+
+msgctxt "#33122"
+msgid "HUELVA"
+msgstr "HUELVA"
+
+msgctxt "#33123"
+msgid "HUESCA"
+msgstr "HUESCA"
+
+msgctxt "#33124"
+msgid "ILLES BALEARS"
+msgstr "ILLES BALEARS"
+
+msgctxt "#33125"
+msgid "JAÉN"
+msgstr "JAÉN"
+
+msgctxt "#33126"
+msgid "LA RIOJA"
+msgstr "LA RIOJA"
+
+msgctxt "#33127"
+msgid "LAS PALMAS"
+msgstr "LAS PALMAS"
+
+msgctxt "#33128"
+msgid "LEÓN"
+msgstr "LEÓN"
+
+msgctxt "#33129"
+msgid "LLEIDA"
+msgstr "LLEIDA"
+
+msgctxt "#33130"
+msgid "LUGO"
+msgstr "LUGO"
+
+msgctxt "#33131"
+msgid "MADRID"
+msgstr "MADRID"
+
+msgctxt "#33132"
+msgid "MÁLAGA"
+msgstr "MÁLAGA"
+
+msgctxt "#33133"
+msgid "MURCIA"
+msgstr "MURCIA"
+
+msgctxt "#33134"
+msgid "NAVARRA"
+msgstr "NAVARRA"
+
+msgctxt "#33135"
+msgid "OURENSE"
+msgstr "OURENSE"
+
+msgctxt "#33136"
+msgid "PONTEVEDRA"
+msgstr "PONTEVEDRA"
+
+msgctxt "#33137"
+msgid "SALAMANCA"
+msgstr "SALAMANCA"
+
+msgctxt "#33138"
+msgid "SANTA CRUZ DE TENERIFE"
+msgstr "SANTA CRUZ DE TENERIFE"
+
+msgctxt "#33139"
+msgid "SEGOVIA"
+msgstr "SEGOVIA"
+
+msgctxt "#33140"
+msgid "SEVILLA"
+msgstr "SEVILLA"
+
+msgctxt "#33141"
+msgid "SORIA"
+msgstr "SORIA"
+
+msgctxt "#33142"
+msgid "TARRAGONA"
+msgstr "TARRAGONA"
+
+msgctxt "#33143"
+msgid "TERUEL"
+msgstr "TERUEL"
+
+msgctxt "#33144"
+msgid "TOLEDO"
+msgstr "TOLEDO"
+
+msgctxt "#33145"
+msgid "VALÈNCIA"
+msgstr "VALÈNCIA"
+
+msgctxt "#33146"
+msgid "VALLADOLID"
+msgstr "VALLADOLID"
+
+msgctxt "#33147"
+msgid "VIZCAYA"
+msgstr "VIZCAYA"
+
+msgctxt "#33148"
+msgid "ZAMORA"
+msgstr "ZAMORA"
+
+msgctxt "#33149"
+msgid "ZARAGOZA"
+msgstr "ZARAGOZA"
+
+msgctxt "#33150"
+msgid " "
+msgstr " "
+

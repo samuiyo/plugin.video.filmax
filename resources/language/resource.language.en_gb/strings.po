@@ -1,0 +1,271 @@
+# XBMC Media Center language file
+# Addon Name: Filmax
+# Addon id: plugin.video.filmax
+# Addon Provider: samui darwin
+msgid ""
+msgstr ""
+"Project-Id-Version: XBMC Addons\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_GB\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "#33001"
+msgid "On showtimes"
+msgstr ""
+
+msgctxt "#33002"
+msgid "Next premiers"
+msgstr ""
+
+msgctxt "#33003"
+msgid "[B]Showtimes[/B]"
+msgstr ""
+
+msgctxt "#33004"
+msgid "[B]Synopsis[/B]"
+msgstr ""
+
+msgctxt "#33005"
+msgid "Search Movie"
+msgstr ""
+
+msgctxt "#33006"
+msgid "Search Director"
+msgstr ""
+
+msgctxt "#33007"
+msgid "Search Cast"
+msgstr ""
+
+msgctxt "#33008"
+msgid "without results"
+msgstr ""
+
+msgctxt "#33009"
+msgid "Information"
+msgstr ""
+
+
+
+msgctxt "#33021"
+msgid "Select your Province to filter the halls of the nearest cinemas."
+msgstr ""
+
+msgctxt "#33022"
+msgid "Select the Filmax cinema of your city from which you wish to see the billboard."
+msgstr ""
+
+msgctxt "#33023"
+msgid "Province:"
+msgstr ""
+
+msgctxt "#33024"
+msgid "Cinema:"
+msgstr ""
+
+
+
+msgctxt "#33101"
+msgid "A CORUÑA"
+msgstr ""
+
+msgctxt "#33102"
+msgid "ALACANT / ALICANTE"
+msgstr ""
+
+msgctxt "#33103"
+msgid "ÁLAVA"
+msgstr ""
+
+msgctxt "#33104"
+msgid "ALBACETE"
+msgstr ""
+
+msgctxt "#33105"
+msgid "ALMERÍA"
+msgstr ""
+
+msgctxt "#33106"
+msgid "ANDORRA"
+msgstr ""
+
+msgctxt "#33107"
+msgid "ASTURIAS"
+msgstr ""
+
+msgctxt "#33108"
+msgid "BADAJOZ"
+msgstr ""
+
+msgctxt "#33109"
+msgid "BARCELONA"
+msgstr ""
+
+msgctxt "#33110"
+msgid "BURGOS"
+msgstr ""
+
+msgctxt "#33111"
+msgid "CÁDIZ"
+msgstr ""
+
+msgctxt "#33112"
+msgid "CANTABRIA"
+msgstr ""
+
+msgctxt "#33113"
+msgid "CASTELLÓ / CASTELLÓN"
+msgstr ""
+
+msgctxt "#33114"
+msgid "CEUTA"
+msgstr ""
+
+msgctxt "#33115"
+msgid "CIUDAD REAL"
+msgstr ""
+
+msgctxt "#33116"
+msgid "CÓRDOBA"
+msgstr ""
+
+msgctxt "#33117"
+msgid "CUENCA"
+msgstr ""
+
+msgctxt "#33118"
+msgid "GIPUZKOA"
+msgstr ""
+
+msgctxt "#33119"
+msgid "GIRONA"
+msgstr ""
+
+msgctxt "#33120"
+msgid "GRANADA"
+msgstr ""
+
+msgctxt "#33121"
+msgid "GUADALAJARA"
+msgstr ""
+
+msgctxt "#33122"
+msgid "HUELVA"
+msgstr ""
+
+msgctxt "#33123"
+msgid "HUESCA"
+msgstr ""
+
+msgctxt "#33124"
+msgid "ILLES BALEARS"
+msgstr ""
+
+msgctxt "#33125"
+msgid "JAÉN"
+msgstr ""
+
+msgctxt "#33126"
+msgid "LA RIOJA"
+msgstr ""
+
+msgctxt "#33127"
+msgid "LAS PALMAS"
+msgstr ""
+
+msgctxt "#33128"
+msgid "LEÓN"
+msgstr ""
+
+msgctxt "#33129"
+msgid "LLEIDA"
+msgstr ""
+
+msgctxt "#33130"
+msgid "LUGO"
+msgstr ""
+
+msgctxt "#33131"
+msgid "MADRID"
+msgstr ""
+
+msgctxt "#33132"
+msgid "MÁLAGA"
+msgstr ""
+
+msgctxt "#33133"
+msgid "MURCIA"
+msgstr ""
+
+msgctxt "#33134"
+msgid "NAVARRA"
+msgstr ""
+
+msgctxt "#33135"
+msgid "OURENSE"
+msgstr ""
+
+msgctxt "#33136"
+msgid "PONTEVEDRA"
+msgstr ""
+
+msgctxt "#33137"
+msgid "SALAMANCA"
+msgstr ""
+
+msgctxt "#33138"
+msgid "SANTA CRUZ DE TENERIFE"
+msgstr ""
+
+msgctxt "#33139"
+msgid "SEGOVIA"
+msgstr ""
+
+msgctxt "#33140"
+msgid "SEVILLA"
+msgstr ""
+
+msgctxt "#33141"
+msgid "SORIA"
+msgstr ""
+
+msgctxt "#33142"
+msgid "TARRAGONA"
+msgstr ""
+
+msgctxt "#33143"
+msgid "TERUEL"
+msgstr ""
+
+msgctxt "#33144"
+msgid "TOLEDO"
+msgstr ""
+
+msgctxt "#33145"
+msgid "VALÈNCIA"
+msgstr ""
+
+msgctxt "#33146"
+msgid "VALLADOLID"
+msgstr ""
+
+msgctxt "#33147"
+msgid "VIZCAYA"
+msgstr ""
+
+msgctxt "#33148"
+msgid "ZAMORA"
+msgstr ""
+
+msgctxt "#33149"
+msgid "ZARAGOZA"
+msgstr ""
+
+msgctxt "#33150"
+msgid " "
+msgstr ""
+
