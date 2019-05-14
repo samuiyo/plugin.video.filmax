@@ -5,51 +5,66 @@ import xbmcgui
 import xbmcaddon
 import xbmcplugin
 
+#from future.standard_library import install_aliases
+#install_aliases()
+
 import os
 import re
 import sys
 import math
-import urllib
-import urlparse
 import unicodedata
+#import html as html_ps
+
+try:
+	import urllib.parse
+	#from urllib.parse import urlparse, urlencode
+	from urllib.request import urlopen, Request
+	#from urllib.error import HTTPError
+except:
+	import urllib
+	import urlparse
+#import HTMLParser
+#parser = HTMLParser.HTMLParser()
 from resources.lib.urlselector import cineurlselector
 	
 addonID = xbmcaddon.Addon('plugin.video.filmax')
+media = addonID.getAddonInfo('path')+"/resources/media"
+APP_NAME = addonID.getAddonInfo('name')
 
 base_url = sys.argv[0]
 addon_handle = int(sys.argv[1])
-args = urlparse.parse_qs(sys.argv[2][1:])
+try:
+	args = urllib.parse.parse_qs(sys.argv[2][1:])
+except:
+#	import urlparse
+	args = urlparse.parse_qs(sys.argv[2][1:])
 
 xbmcplugin.setContent(addon_handle, 'movies')
 language = xbmc.getInfoLabel('System.Language')
 
 # Localized strings
-T_SHOWTIME=30001
-T_PREMIERE=30002
-T_PROYECTS=30003
-T_SINOPSYS=30004
-T_SEARCH_M=30005
-T_SEARCH_D=30006
-T_SEARCH_A=30007
-T_NO_RESUL=30008
-T_INFO_MEN=30009
+T_SHOWTIME=33001
+T_PREMIERE=33002
+T_PROYECTS=33003
+T_SINOPSYS=33004
+T_SEARCH_M=33005
+T_SEARCH_D=33006
+T_SEARCH_A=33007
+T_NO_RESUL=33008
+T_INFO_MEN=33009
 
-APP_NAME = addonID.getAddonInfo('name')
 SEL_CINE = addonID.getSetting('SEL_CINE')
 if SEL_CINE == " ":
 	addonID.openSettings()
 	SEL_CINE = addonID.getSetting('SEL_CINE')
 
-urlbase = "https://www.publicine.net"
 listing = []
 
 
 def get_localized_string(code):
 	dev = addonID.getLocalizedString(code)
-	try:
-		dev = dev.encode("utf-8")
-	except:
-		pass
+#	dev = html_ps.unescape(dev.encode('utf-8'))
+	dev = dev.encode("utf-8")
 	return dev
 
 def change_date_format(pt):
@@ -87,11 +102,14 @@ def change_date_format(pt):
 	return premiered
 
 def build_url(query):
-	return base_url + '?' + urllib.urlencode(query)
+	try:
+		return base_url + '?' + urllib.parse.urlencode(query)
+	except:
+		return base_url + '?' + urllib.urlencode(query)
 
 def get_clean_wSearch(ws):
 	ws = ws.replace('ñ','ena2').replace('ç','ce2').replace('_','').replace(' ','_')
-	ws = ''.join((c for c in unicodedata.normalize('NFD', ws.decode("utf-8")) if unicodedata.category(c) != 'Mn'))
+	ws = ''.join((c for c in unicodedata.normalize('NFD', unicode(ws)) if unicodedata.category(c) != 'Mn'))
 	ws = re.sub('[^A-Za-z0-9_]+', '', ws)
 	return ws
 
@@ -100,9 +118,10 @@ def get_showtime_list(url):
 	xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(APP_NAME, SEL_CINE.split('. ',1)[-1], 5000, addonID.getAddonInfo('icon')))
 	
 	try:
+		req = Request(url)
+		html = urlopen(req).read().decode('iso-8859-1').encode('utf-8')
+	except:
 		html = urllib.urlopen(url).read().decode('iso-8859-1').encode("utf-8")
-	except (SyntaxError, TypeError) as e:
-		xbmc.log(msg='Error: %s' % str(e), level=xbmc.LOGERROR)
 	
 	html = [line for line in html.split('\n') if "<div class='cartellera'>" in line]
 	html = re.sub(r"<div class='cartellera'>", r'\n<div>', ''.join(html))
@@ -110,7 +129,9 @@ def get_showtime_list(url):
 	html = re.sub(r"<div class='versio apcartellera'>[^</div>]*</div>", r'', html)
 	html = re.sub(r"<div class='spacer'></div>[^\n]*\n", r'\n', html)
 	html = re.sub(r"""<div class='spacer'></div><p class="clear">.*</p>""", r'', html)
-	html = html.strip()
+#	html = parser.unescape(html.decode('utf-8').strip())
+#	html = html_ps.unescape(html.strip())
+#	html = html.encode("utf-8")
 	
 	query = """<div><div class='poster'.+?title="(.+?)".+?href='(.+?)'.+?src='(.+?)'>.+?</span>.+?<br/>(.+?)<br/>(.+?)<br/></div>.+?<table><tr>(.+?)</tr></table>"""
 	films = re.compile(query, re.DOTALL).findall(html)
@@ -121,7 +142,7 @@ def get_showtime_list(url):
 	
 	for f in films:
 		title = f[0]
-		url2 = urlbase + f[1]
+		url = urlbase + f[1]
 		movieID = re.sub(r"/img/pel/thumb/([0-9].*)t.jpg", r'\1' , f[2])
 		image = urlbase + "/img/pel/full/" + movieID + "f.jpg"
 #		director = f[3]
@@ -132,14 +153,19 @@ def get_showtime_list(url):
 		proyects = re.sub(r'<[^>]*>', r' ', proyects)
 		proyects = proyects.replace('.',':').replace(': ','. ').replace('  ',' ')#.replace('  ',' ')
 		
-		html2 = urllib.urlopen(url2).read().decode('iso-8859-1').encode("utf-8")
-		html2 = [line for line in html2.split('\n') if "<span class='up'>" in line]
-		html2 = re.sub(r"<span class='up'>IDIOMA</span>[^>]*>", r'', ''.join(html2))
+		try:
+			req = Request(url)
+			html = urlopen(req).read().decode('iso-8859-1').encode('utf-8')
+		except:
+			html = urllib.urlopen(url).read().decode('iso-8859-1').encode("utf-8")
 		
-		if not 'iframe' in html2 and not CAST_FILT_LEN in html2:
+		html = [line for line in html.split('\n') if "<span class='up'>" in line]
+		html = re.sub(r"<span class='up'>IDIOMA</span>[^>]*>", r'', ''.join(html))
+		
+		if not 'iframe' in html and not CAST_FILT_LEN in html:
 			#opts = '[x] Trailer\n[x] Cast'
-			query2 = ".+?</span>(.+?)<br.+?</span>.+?<br.+?</span>.+?<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>(.+?)<br"
-			movies = re.findall(query2, html2)
+			query = ".+?</span>(.+?)<br.+?</span>.+?<br.+?</span>.+?<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>(.+?)<br"
+			movies = re.findall(query, html)
 			
 			for m in movies:
 				premiered = change_date_format(m[0].strip().lower())
@@ -157,10 +183,10 @@ def get_showtime_list(url):
 				
 				listing.append((k_url, list_item, False))
 			
-		elif not 'iframe' in html2 and CAST_FILT_LEN in html2:
+		elif not 'iframe' in html and CAST_FILT_LEN in html:
 			#opts = '[x] Trailer\n[v] Cast'
-			query2 = ".+?</span>(.+?)<br.+?</span>.+?<br.+?</span>.+?<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>(.+?)<br"
-			movies = re.findall(query2, html2)
+			query = ".+?</span>(.+?)<br.+?</span>.+?<br.+?</span>.+?<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>(.+?)<br"
+			movies = re.findall(query, html)
 			
 			for m in movies:
 				premiered = change_date_format(m[0].strip().lower())
@@ -178,10 +204,10 @@ def get_showtime_list(url):
 				
 				listing.append((k_url, list_item, False))
 			
-		elif 'iframe'in html2 and not CAST_FILT_LEN in html2:
+		elif 'iframe'in html and not CAST_FILT_LEN in html:
 			#opts = '[v] Trailer\n[x] Cast'
-			query2 = ".+?</span>(.+?)<br.+?</span>.+?<br.+?</span>.+?<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?iframe:'(.+?)',boxid:"
-			movies = re.findall(query2, html2)
+			query = ".+?</span>(.+?)<br.+?</span>.+?<br.+?</span>.+?<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?iframe:'(.+?)',boxid:"
+			movies = re.findall(query, html)
 			
 			for m in movies:
 				premiered = change_date_format(m[0].strip().lower())
@@ -201,8 +227,8 @@ def get_showtime_list(url):
 			
 		else:
 			#opts = '[v] Trailer\n[v] Cast'
-			query2 = ".+?</span>(.+?)<br.+?</span>.+?<br.+?</span>.+?<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?iframe:'(.+?)',boxid:"
-			movies = re.findall(query2, html2)
+			query = ".+?</span>(.+?)<br.+?</span>.+?<br.+?</span>.+?<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?iframe:'(.+?)',boxid:"
+			movies = re.findall(query, html)
 			
 			for m in movies:
 				premiered = change_date_format(m[0].strip().lower())
@@ -222,7 +248,7 @@ def get_showtime_list(url):
 				listing.append((k_url, list_item, False))
 			
 	if len(listing) < 1:
-		list_item = xbmcgui.ListItem(label=T_SHOWTIME+': '+get_localized_string(T_NO_RESUL), path='')
+		list_item = xbmcgui.ListItem(label=get_localized_string(T_SHOWTIME)+': '+get_localized_string(T_NO_RESUL), path='')
 		k_url = ''
 		listing.append((k_url, list_item, False))
 	
@@ -230,16 +256,20 @@ def get_showtime_list(url):
 
 def get_premiere_list(url):
 	try:
+		req = Request(url)
+		html = urlopen(req).read().decode('iso-8859-1').encode('utf-8')
+	except:
 		html = urllib.urlopen(url).read().decode('iso-8859-1').encode("utf-8")
-	except (SyntaxError, TypeError) as e:
-		xbmc.log(msg='Error: %s' % str(e), level=xbmc.LOGERROR)
 	
 	html = html.split("<div id='llistat-pelicules'>", 1)[-1]
 	html = html.split('<div id="dreta">', 1)[0]
 	html = html.replace('\t','').replace('\r','').replace('\n','')
+	html = re.sub(r"<div class='cover'>", r"\n<div class='cover'>", html)
 	html = [line for line in html.split('\n') if "<div class='cover'>" in line]
-	html = re.sub(r"<div class='cover'>", r'\n<div>', ''.join(html))
-	html = html.strip()
+	html = '\n'.join(html)
+#	html = parser.unescape(html.decode('utf-8').strip())
+#	html = html_ps.unescape(html.strip())
+#	html = html.encode("utf-8")
 	
 	query = """.+?title='(.+?)'.+?#no' (.+?)><.+?src='(.+?)' alt"""
 	movies = re.compile(query, re.DOTALL).findall(html)
@@ -269,7 +299,7 @@ def get_premiere_list(url):
 		listing.append((k_url, list_item, False))
 		
 	if len(listing) < 1:
-		list_item = xbmcgui.ListItem(label=T_PREMIERE+': '+get_localized_string(T_NO_RESUL), path='')
+		list_item = xbmcgui.ListItem(label=get_localized_string(T_PREMIERE)+': '+get_localized_string(T_NO_RESUL), path='')
 		k_url = ''
 		listing.append((k_url, list_item, False))
 	
@@ -277,9 +307,10 @@ def get_premiere_list(url):
 
 def get_search_list(url):
 	try:
+		req = Request(url)
+		html = urlopen(req).read().decode('iso-8859-1').encode('utf-8')
+	except:
 		html = urllib.urlopen(url).read().decode('iso-8859-1').encode("utf-8")
-	except (SyntaxError, TypeError) as e:
-		xbmc.log(msg='Error: %s' % str(e), level=xbmc.LOGERROR)
 	
 	html = html.split('<div id="esquerra">', 1)[-1]
 	html = html.split('<div id="dreta">', 1)[0]
@@ -289,14 +320,16 @@ def get_search_list(url):
 	html = re.sub(r"<div>", r'\n<div>', ''.join(html))
 	html = re.sub(r"<br/><img title=[^>]*>", r'', html)
 	html = re.sub(r"<div class='spacer'></div>[^\n]*\n", r'\n', html)
-	html = html.strip()
+#	html = parser.unescape(html.decode('utf-8').strip())
+#	html = html_ps.unescape(html.strip())
+#	html = html.encode("utf-8")
 	
 	query = """<div><div class='poster'.+?title="(.+?)".+?href='(.+?)'.+?src='(.+?)'>.+?</span><strong>(.+?)</strong><br/>.+?<br/><strong>(.+?)<br/></strong>+?</div></div>"""
 	films = re.compile(query, re.DOTALL).findall(html)
 	
 	for f in films:
 		title = f[0]
-		url2 = urlbase + f[1]
+		url = urlbase + f[1]
 		movieID = re.sub(r"/img/pel/thumb/([0-9].*)t.jpg", r'\1' , f[2])
 		image = urlbase + "/img/pel/full/" + movieID + "f.jpg"
 #		director = f[3]
@@ -309,14 +342,19 @@ def get_search_list(url):
 			time = ygt[2]
 		seconds = int(re.sub('[^0-9]', '', time))*60
 		
-		html2 = urllib.urlopen(url2).read().decode('iso-8859-1').encode("utf-8")
-		html2 = [line for line in html2.split('\n') if "<span class='up'>" in line]
-		html2 = re.sub(r"<span class='up'>", r'<span>', ''.join(html2))
+		try:
+			req = Request(url)
+			html = urlopen(req).read().decode('iso-8859-1').encode('utf-8')
+		except:
+			html = urllib.urlopen(url).read().decode('iso-8859-1').encode("utf-8")
 		
-		if not 'iframe' in html2 and not CAST_FILT_LEN in html2:
+		html = [line for line in html.split('\n') if "<span class='up'>" in line]
+		html = re.sub(r"<span class='up'>", r'<span>', ''.join(html))
+		
+		if not 'iframe' in html and not CAST_FILT_LEN in html:
 			#opts = '[x] Trailer\n[x] Cast'
-			query2 = ".+?</span>(.+?)<br.+?</span>.+?<br.+?</span>.+?<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>.+?<br.+?</span>(.+?)<br"
-			movies = re.findall(query2, html2)
+			query = ".+?</span>(.+?)<br.+?</span>.+?<br.+?</span>.+?<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>.+?<br.+?</span>(.+?)<br"
+			movies = re.findall(query, html)
 			
 			for m in movies:
 				premiered = change_date_format(m[0].strip().lower())
@@ -334,10 +372,10 @@ def get_search_list(url):
 				
 				listing.append((k_url, list_item, False))
 			
-		elif not 'iframe' in html2 and CAST_FILT_LEN in html2:
+		elif not 'iframe' in html and CAST_FILT_LEN in html:
 			#opts = '[x] Trailer\n[v] Cast'
-			query2 = ".+?</span>(.+?)<br.+?</span>.+?<br.+?</span>.+?<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>(.+?)<br"
-			movies = re.findall(query2, html2)
+			query = ".+?</span>(.+?)<br.+?</span>.+?<br.+?</span>.+?<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>(.+?)<br"
+			movies = re.findall(query, html)
 			
 			for m in movies:
 				premiered = change_date_format(m[0].strip().lower())
@@ -355,10 +393,10 @@ def get_search_list(url):
 				
 				listing.append((k_url, list_item, False))
 			
-		elif 'iframe' in html2 and not CAST_FILT_LEN in html2:
+		elif 'iframe' in html and not CAST_FILT_LEN in html:
 			#opts = '[v] Trailer\n[x] Cast'
-			query2 = ".+?</span>(.+?)<br.+?</span>.+?<br.+?</span>.+?<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?iframe:'(.+?)',boxid:"
-			movies = re.findall(query2, html2)
+			query = ".+?</span>(.+?)<br.+?</span>.+?<br.+?</span>.+?<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?iframe:'(.+?)',boxid:"
+			movies = re.findall(query, html)
 			
 			for m in movies:
 				premiered = change_date_format(m[0].strip().lower())
@@ -378,8 +416,8 @@ def get_search_list(url):
 			
 		else:
 			#opts = '[v] Trailer\n[v] Cast'
-			query2 = ".+?</span>(.+?)<br.+?</span>.+?<br.+?</span>.+?<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?iframe:'(.+?)',boxid:"
-			movies = re.findall(query2, html2)
+			query = ".+?</span>(.+?)<br.+?</span>.+?<br.+?</span>.+?<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?</span>(.+?)<br.+?iframe:'(.+?)',boxid:"
+			movies = re.findall(query, html)
 			
 			for m in movies:
 				premiered = change_date_format(m[0].strip().lower())
@@ -411,7 +449,7 @@ except (SyntaxError, TypeError) as e:
 	xbmc.log(msg='Error: %s' % str(e), level=xbmc.LOGERROR)
 
 #os.path.join('assets', 'star-full.svg')
-media = addonID.getAddonInfo('path')+"/resources/media"
+urlbase = "https://www.publicine.net"
 
 if mode is None:
 	url = build_url({'mode': 'folder', 'foldername': get_localized_string(T_SHOWTIME)})
